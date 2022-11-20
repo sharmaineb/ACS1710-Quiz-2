@@ -1,28 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz2-SWAPI</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
 {% block content %}
-<h1>Star Wars API Search</h1>
+<br>
+<h1 style="margin: 0.3em; font-family: helvetica;">Star Wars API Search</h1>
+<br>
 <form action="/results" method="POST">
     <fieldset>
-        <legend>Please enter a number between 1 and 88:</legend>
-        <p>
-            <label>
-                Which Star Wars character would you like to look up?
-
-            <input type="number" name="character_index" min="1" max="88" value ="1" required>
-            </label>
-        </p>
-            <input type="submit" value="Search!">
+        <legend style="margin: 0.5em; font-family: helvetica;">Please enter an ID number between 1 and 88:</legend>
+        <br>
+        <input class="form-control" type="text" placeholder="Which Star Wars character would you like more information on?" name="character_index" style="margin-left: 0.5em; font-family: helvetica;">
+        <br>
+        <input class="btn btn-primary" type="submit" value="Search!" style="margin: 0.5em; font-family: helvetica;">
     </fieldset>
 </form>
+<br>
+<br>
 <section id="results">
-    <p>
-        Here's your information:
-    </p>
+    <h3 style="margin: 0.5em; font-family: helvetica;">Here's the information on the character you chose:</h3>
     {% if True %}
+    <ul style="font-family: helvetica;">
         <p>Name: {{name}}</p>
-        <p>Height: {{height}} cm</p>  
-        <p>Mass: {{mass}} kg</p>
+        <p>Height: {{height}} CM</p>  
+        <p>Mass: {{mass}} KG</p>
         <p>Hair color: {{hair_color}}</p>
         <p>Eye color: {{eye_color}}</p>
     {% endif %}
+    </ul>
 </section>
 {% endblock %}
+</body>
+</html>

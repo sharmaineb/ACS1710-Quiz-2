@@ -8,18 +8,23 @@ API_URL = "https://swapi.py4e.com/api/"
 
 @app.route("/")
 def homepage():
-    return render_template("home.html")
+    return render_template("home.html") 
 
-@app.route("/search_results")
+@app.route("/results")
+def form():
+    return render_template("results.html")
+
+@app.route("/results", methods=["GET", "POST"])
 def results():
     if request.method == "POST":
-        people = request.form.get('people_list')
-        people_result = requests.get(f"{API_URL}people/{people}")
-        name = json.loads(people_result.content).get('name')
-        height = json.loads(people_result.content).get('height')
-        mass = json.loads(people_result.content).get('mass')
-        hair_color = json.loads(people_result.content).get('hair_color')
-        eye_color = json.loads(people_result.content).get('eye_color')
+        character = request.form.get('character_index')
+        character_result = requests.get(f"{API_URL}people/{character}")
+        
+        name = json.loads(character_result.content).get('name')
+        height = json.loads(character_result.content).get('height')
+        mass = json.loads(character_result.content).get('mass')
+        hair_color = json.loads(character_result.content).get('hair_color')
+        eye_color = json.loads(character_result.content).get('eye_color')
 
         context = {
             'name' : name,
@@ -29,10 +34,10 @@ def results():
             'eye_color' : eye_color
         }
 
-        return render_template("search_results.html", **context)
+        return render_template("results.html", **context)
 
     else:
-        return render_template("search_results.html")
+        return render_template("results.html")
 
 if __name__ == '__main__':
     app.config['ENV'] = 'development'

@@ -1,0 +1,38 @@
+<!-- {% extends 'home.html' %} -->
+
+<!-- {% block title %}
+All Things Star Wars 
+{% endblock %} -->
+
+{% block content %}
+<h1>Star Wars API</h1>
+<form action="/search_results" method="POST">
+    <fieldset>
+        <legend>Please input an ID number:</legend>
+        <p>
+            <label>
+                Which character from Star Wars would you like more info on? (# 1-88):
+
+                <input type="number" name="people_list">
+            </label>
+        </p>
+                <input type="submit" value="Search">
+    </fieldset>
+</form>
+
+<section id="search_results">
+    <p>
+        Here is your information!:
+    </p>
+    {% if True %}
+        <p>Name: {{name}}</p>
+        <p>Height: {{height}}</p>
+        <p>Mass: {{mass}}</p>
+        <p>Hair Color: {{hair_color}}</p>
+        <p>Eye Color: {{eye_color}}</p>
+    {% endif %}
+</section>
+
+{% endblock %}
+
+<!-- used assignment 3 as a reference -->

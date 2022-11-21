@@ -37,6 +37,7 @@ def results():
         return render_template("results.html", **context)
 
     else:
+        
         return render_template("results.html")
 
 if __name__ == '__main__':

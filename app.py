@@ -23,7 +23,9 @@ def results():
     if request.method == "POST":
         character = request.form.get('character_index')
         character_result = requests.get(f"{API_URL}people/{character}")
-        
+
+        # Display the character data from SWAPI. You'll need to include an input that allows us to input the id of a character.
+        # Your code will request the data from the API and display it on the page.
         name = json.loads(character_result.content).get('name')
         height = json.loads(character_result.content).get('height')
         mass = json.loads(character_result.content).get('mass')
@@ -38,6 +40,7 @@ def results():
         
         # films
         # my attempt at the film stretch challenge, but it still returns the url of the film :)
+        # Loop over this list, make a request to get the data for each film and display the name of each film.
         films = json.loads(character_result.content).get('films')
         list_of_films = []
         for film in films:

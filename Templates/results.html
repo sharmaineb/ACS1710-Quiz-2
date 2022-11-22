@@ -32,6 +32,12 @@
         <p>Hair color: {{hair_color}}</p>
         <p>Eye color: {{eye_color}}</p>
     </ul>
+    <ul>
+        <p>Films:</p>
+    {% for film in films %}
+        <li>{{film}}</li>
+    {% endfor %}
+    </ul>
 </section>
 {% endblock %}
 </body>
